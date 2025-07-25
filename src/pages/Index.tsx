@@ -104,14 +104,15 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-500 via-orange-600 to-blue-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-16 overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute bottom-32 right-20 w-48 h-48 bg-orange-300 rounded-full blur-2xl animate-pulse delay-300"></div>
-          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-blue-300 rounded-full blur-lg animate-pulse delay-700"></div>
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-orange-400 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute bottom-32 right-20 w-48 h-48 bg-blue-400 rounded-full blur-2xl animate-pulse delay-300"></div>
+          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-purple-400 rounded-full blur-lg animate-pulse delay-700"></div>
+          <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-cyan-400 rounded-full blur-md animate-pulse delay-1000"></div>
         </div>
         
         <div className="max-w-7xl mx-auto text-center text-white relative z-10">
@@ -148,8 +149,7 @@ const Index = () => {
             </Button>
             <Button 
               size="lg" 
-              variant="outline" 
-              className="border-2 border-white text-white hover:bg-white hover:text-orange-600 px-10 py-6 text-lg rounded-full backdrop-blur-sm hover:backdrop-blur-md transition-all duration-300 hover:scale-105 shadow-xl"
+              className="bg-white/20 backdrop-blur-md text-white border-2 border-white/30 hover:bg-white hover:text-slate-900 px-10 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-xl font-semibold"
               onClick={() => scrollToSection('contact')}
             >
               <Icon name="Phone" className="mr-3" size={24} />
