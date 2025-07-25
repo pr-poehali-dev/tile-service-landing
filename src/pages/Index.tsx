@@ -14,6 +14,13 @@ const Index = () => {
   const [tileType, setTileType] = useState<string>('');
   const [calculatedPrice, setCalculatedPrice] = useState<number>(0);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const workTypes = {
     'floor': { name: 'Укладка пола', price: 800 },
     'wall': { name: 'Облицовка стен', price: 1200 },
@@ -99,33 +106,82 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-500 via-orange-600 to-blue-900">
       {/* Hero Section */}
-      <section className="relative py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center text-white">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 font-montserrat">
-            МАСТЕР
-            <span className="block bg-gradient-to-r from-white to-orange-200 bg-clip-text text-transparent">
+      <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute bottom-32 right-20 w-48 h-48 bg-orange-300 rounded-full blur-2xl animate-pulse delay-300"></div>
+          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-blue-300 rounded-full blur-lg animate-pulse delay-700"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto text-center text-white relative z-10">
+          <div className="mb-8">
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
+              <Icon name="Award" className="mr-2 text-orange-300" size={20} />
+              <span className="text-sm font-medium">Профессиональные плиточные работы</span>
+            </div>
+          </div>
+          
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 font-montserrat leading-tight">
+            <span className="block bg-gradient-to-r from-white via-orange-200 to-white bg-clip-text text-transparent">
+              МАСТЕР
+            </span>
+            <span className="block text-4xl md:text-6xl mt-2 font-light tracking-wider">
               ПЛИТОЧНИК
             </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
-            Профессиональная укладка плитки и облицовочные работы любой сложности. 
-            Гарантия качества и точные сроки выполнения.
+          
+          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-4xl mx-auto leading-relaxed">
+            Превращаем ваши идеи в <span className="text-orange-300 font-semibold">безупречную реальность</span>.
+            <br className="hidden md:block" />
+            Профессиональная укладка плитки с гарантией качества на 2 года.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-orange-600 hover:bg-orange-50 font-semibold px-8 py-4 text-lg">
-              <Icon name="Calculator" className="mr-2" />
+          
+          <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-16">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 font-semibold px-10 py-6 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300 border-0"
+              onClick={() => scrollToSection('calculator')}
+            >
+              <Icon name="Calculator" className="mr-3" size={24} />
               Рассчитать стоимость
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-orange-600 px-8 py-4 text-lg">
-              <Icon name="Phone" className="mr-2" />
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-2 border-white text-white hover:bg-white hover:text-orange-600 px-10 py-6 text-lg rounded-full backdrop-blur-sm hover:backdrop-blur-md transition-all duration-300 hover:scale-105 shadow-xl"
+              onClick={() => scrollToSection('contact')}
+            >
+              <Icon name="Phone" className="mr-3" size={24} />
               Связаться с нами
             </Button>
           </div>
+          
+          {/* Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <div className="text-3xl font-bold text-orange-300 mb-2">500+</div>
+              <div className="text-sm opacity-80">Выполненных проектов</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <div className="text-3xl font-bold text-orange-300 mb-2">10+</div>
+              <div className="text-sm opacity-80">Лет опыта работы</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <div className="text-3xl font-bold text-orange-300 mb-2">2 года</div>
+              <div className="text-sm opacity-80">Гарантия качества</div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <Icon name="ChevronDown" className="text-white opacity-60" size={32} />
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-16 px-4 bg-white">
+      <section id="services" className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4 font-montserrat">Наши услуги</h2>
@@ -152,7 +208,7 @@ const Index = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section id="portfolio" className="py-16 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4 font-montserrat">Наши работы</h2>
@@ -183,7 +239,7 @@ const Index = () => {
       </section>
 
       {/* Calculator Section */}
-      <section className="py-16 px-4 bg-white">
+      <section id="calculator" className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4 font-montserrat">Калькулятор стоимости</h2>
@@ -294,7 +350,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-orange-500 to-blue-900">
+      <section id="contact" className="py-16 px-4 bg-gradient-to-r from-orange-500 to-blue-900">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white mb-4 font-montserrat">Свяжитесь с нами</h2>
